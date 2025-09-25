@@ -1,0 +1,227 @@
+/* ページ全体 */
+.page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    font-family: 'Hiragino Mincho ProN W3','Yu Mincho','Times New Roman',serif;
+    background-color: #f5f5f5; /* ページ背景薄グレー */
+    border-radius: 8px;
+}
+
+.page-title {
+    font-size: 34px;       /* フォントサイズは任意 */
+    font-weight: bold;
+    margin-bottom: 50px;   /* 下の余白を広く */
+}
+
+.form-label {
+    display: block;       /* ブロック表示 */
+    font-size: 20px;      /* 文字サイズ */
+    font-weight: bold;    /* 太字 */
+    margin-bottom: 8px;   /* ラベルと入力ボックスの間の余白 */
+}
+
+input:not([type="file"]), textarea, select {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* 必須マーク */
+.required {
+    display: inline-block;      /* ボックスの形にする */
+    background-color: #ff4d4f; /* 赤背景 */
+    color: #fff;                /* 白文字 */
+    font-size: 12px;            /* 文字サイズ */
+    font-weight: bold;
+    padding: 2px 4px;           /* 上下左右の余白（左右を少し狭く） */
+    border-radius: 0;           /* 角丸なし */
+    margin-left: 5px;           /* 文字との間隔を狭く */
+    vertical-align: middle;     /* 文字とボックスを中央揃え */
+}
+/* 入力ボックス */
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 6px;
+    box-sizing: border-box;
+}
+
+/* 商品説明用 textarea */
+textarea {
+    min-height: 200px;
+    max-height: 400px;
+    resize: none;
+    line-height: 1.6;
+    color: #333;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #c0c0c0;  /* 薄いグレー */
+    font-weight: normal;
+    opacity: 1;
+}
+/* 季節チェックボックス */
+.season-checkboxes {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px; 
+}
+
+.custom-radio {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.custom-radio input[type="checkbox"] {
+    display: none;
+}
+
+.custom-radio .checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #666;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-right: 6px;
+    position: relative;
+}
+
+.custom-radio input[type="checkbox"]:checked + .checkmark {
+    background-color: #000;
+    border-color: #000;
+}
+
+.custom-radio input[type="checkbox"]:checked + .checkmark::after {
+    content: "✓";
+    color: #fff;
+    font-size: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ファイル選択 */
+.custom-file-label {
+    border: 1px solid #000;
+    background-color: #d3d3d3;
+    color: #000;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 6px;
+    margin-bottom: 20px;
+}
+
+#image-name {
+    font-size: 16px;
+    color: #333;
+    margin-left: 12px;
+}
+
+/* ファイル選択ボタンとファイル名を横並び */
+.file-select-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* ボタン配置 */
+.button-group {
+    display: flex;              /* 横並び */
+    justify-content: center;    /* 親要素内で中央揃え */
+    gap: 20px;                  /* ボタン間のスペース */
+    margin-top: 20px;           /* 上に余白 */
+    width: 100%;
+}
+
+.button-group .btn {
+    width: 200px;               /* 横幅を揃える */
+    padding: 15px 0;            /* 高さ */
+    font-size: 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;        /* 文字を縦中央に */
+    justify-content: center;    /* 文字を横中央に */
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn {
+    padding: 14px 40px;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary {
+    background-color: #FFD700;
+    color: #000;
+}
+
+.btn-primary:hover {
+    background-color: #FFC700;
+}
+
+.btn-secondary {
+    background-color: #d3d3d3;
+    color: #000;
+}
+
+.btn-secondary:hover {
+    background-color: #c0c0c0;
+}
+
+.form-group input,
+.form-group textarea {
+    margin-bottom: 0; /* 下の余白を削除 */
+}
+
+.form-group .error {
+    margin-top: 2px; /* 上の余白を狭くする */
+    margin-bottom: 4px; /* 下も微調整 */
+    font-size: 14px;
+    color: red;
+}
+
+.form-group {
+    margin-bottom: 30px; /* グループごとの下余白を広く */
+}
+
+#image-preview {
+    max-width: 400px; /* 画像の最大幅 */
+    width: 100%;      /* 親要素いっぱいに広げる場合 */
+    height: auto;     /* 縦横比を維持 */
+    display: block;
+    margin-top: 10px;
+}
+
+/* ファイル選択ボタンを少し小さく */
+#select-file-btn {
+    padding: 12px 20px;      /* 上下 6px、左右 10px に縮小 */
+    font-size: 16px;        /* 文字サイズを少し小さく */
+}
+
+#file-name {
+    display: none; /* 初期状態で非表示 */
+    margin-left: 10px;
+    font-size: 16px;
+    color: #333;
+}
