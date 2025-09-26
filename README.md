@@ -52,7 +52,6 @@ URL
 ※/products/search は現時点では未使用です。
 ※ 検索や並び替えは /products に対して GET パラメータとして処理しています。
 
-## ER 図
 
 ## ER 図
 
