@@ -54,7 +54,7 @@ URL
 
 ## ER 図
 
-![ER図](https://raw.githubusercontent.com/shiroyama373/Mogitate/main/Desktop/mogitate/docs/mogitate.drawio.svg)
+![ER図](./docs/mogitate.svg)
 
 
 
