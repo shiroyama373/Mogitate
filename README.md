@@ -54,10 +54,6 @@ URL
 
 ## ER 図
 
-![ER図](/docs/mogitate.png)
+## ER 図
 
-注意: GitHub 上のキャッシュや反映タイミングにより、最初の画面では ER図が表示されない場合があります。
-画像が表示されない場合は、ページをリロードするか、別ブラウザ／シークレットモードで確認してください。
-
-
-
+![ER図](https://github.com/shiroyama373/Mogitate/raw/main/docs/mogitate.png)
