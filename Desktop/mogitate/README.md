@@ -54,7 +54,7 @@ URL
 
 ## ER 図
 
-![ER図](./docs/mogitate.svg)
+![ER図](docs/mogitate.png)
 
 
 
