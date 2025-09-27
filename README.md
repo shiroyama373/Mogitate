@@ -55,4 +55,4 @@ URL
 
 ## ER 図
 
-![ER図](public/images/mogitate.png)
+![ER図](docs/mogitate.png)
