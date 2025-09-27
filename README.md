@@ -40,15 +40,18 @@ URL
 	1.	シークレットウィンドウ (Chrome: Ctrl+Shift+N)
 	2.	別ブラウザ (Chrome / Edge / Firefox など)
 
-機能一覧
 
-機能            URL
-商品一覧         /products
-商品詳細         /products/{productId}
-商品更新         /products/{productId}/update
-商品登録         /products/register
-検索            /products/search （※未使用）
-削除            /products/{productId}/delete
+## 機能一覧
+
+| 機能       | URL |
+|------------|-------------------------------|
+| 商品一覧   | /products |
+| 商品詳細   | /products/{productId} |
+| 商品更新   | /products/{productId}/update |
+| 商品登録   | /products/register |
+| 検索       | /products/search （※未使用） |
+| 削除       | /products/{productId}/delete |
+
 ※/products/search は現時点では未使用です。
 ※ 検索や並び替えは /products に対して GET パラメータとして処理しています。
 
@@ -57,5 +60,5 @@ URL
 
 ![ER図](docs/er_diagram.png)
 
-ER図はリポジトリ内の `docs/er_diagram.png` に保存しています。  
+ER図はリポジトリ内の docs/er_diagram.png に保存しています。  
 必要に応じてファイルを開いて確認してください。
