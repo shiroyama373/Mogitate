@@ -56,3 +56,6 @@ URL
 ## ER 図
 
 ![ER図](docs/er_diagram.png)
+
+ER図はリポジトリ内の `docs/er_diagram.png` に保存しています。  
+必要に応じてファイルを開いて確認してください。
