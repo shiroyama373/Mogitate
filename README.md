@@ -55,4 +55,4 @@ URL
 
 ## ER 図
 
-![Mogitate ER図](https://raw.githubusercontent.com/shiroyama373/Mogitate/main/docs/mogitate.png)
+![Mogitate ER図](docs/mogitate.png)
