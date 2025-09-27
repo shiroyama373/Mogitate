@@ -60,5 +60,5 @@ URL
 
 ![ER図](docs/er_diagram.png)
 
-ER図はリポジトリ内の docs/er_diagram.png に保存しています。  
+ER図はリポジトリ内の docs/mogitate.png に保存しています。  
 必要に応じてファイルを開いて確認してください。
