@@ -50,5 +50,4 @@ services:
       - mysql
 
 volumes:
-  - ./src:/var/www
-  - ./nginx/conf.d:/etc/nginx/conf.d
+  mogitate_mysql_data: {}
