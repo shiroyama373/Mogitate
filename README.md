@@ -4,8 +4,8 @@
 
 ### Docker ビルド
 
-```bash
-git clone <https://github.com/shiroyama373/Mogitate.git >
+git clone <https://github.com/shiroyama373/Mogitate.git>
+
 docker-compose up -d --build
 
 注意: MySQL は OS によって起動しない場合があります。その場合は、docker-compose.yml を編集し、環境に合わせて調整してください。
@@ -60,5 +60,15 @@ URL
 
 ![ER図](docs/er_diagram.png)
 
-ER図はリポジトリ内の docs/mogitate.png に保存しています。  
+ER図はリポジトリ内の docs/mogitate.png に保存しています。
 必要に応じてファイルを開いて確認してください。
+
+
+
+
+### クローン後に行った変更点
+- 重複していた商品データを削除
+- ProductSeeder を追加し、ダミーデータを簡単に作成できるようにした
+- 画像ファイルを public/images に追加
+- storage/logs の権限問題を修正
+- 必要なマイグレーション・シーディングを行えるように調整（`php artisan migrate:fresh` と `php artisan db:seed --class=ProductSeeder` で確認可能）
