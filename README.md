@@ -23,6 +23,7 @@ php artisan storage:link
 ユーザー情報は src/database/seeders/UsersTableSeeder.php に記載されています。
 
 使用技術
+
 	•	PHP: 8.2.29
 	•	Laravel: 10.48.29
 	•	MySQL:  8.0.43
@@ -58,7 +59,7 @@ URL
 
 ## ER 図
 
-![ER図](docs/er_diagram.png)
+![ER図](docs/mogitate.png)
 
 ER図はリポジトリ内の docs/mogitate.png に保存しています。
 必要に応じてファイルを開いて確認してください。
