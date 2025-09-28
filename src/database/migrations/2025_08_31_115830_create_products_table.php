@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('price');
-            $table->string('image_url')->nullable(); // 最初からnullableにする
+            $table->string('image')->nullable(); // 最初からnullableにする
             $table->text('description')->nullable(); // 最初からnullableにする
             $table->timestamps();
         });

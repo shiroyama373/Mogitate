@@ -19,8 +19,9 @@ Route::post('/products/register', [ProductController::class, 'store'])->name('pr
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 // 商品更新
-Route::get('/products/{product}/update', [ProductController::class, 'edit'])->name('products.edit');
-Route::put('/products/{product}/update', [ProductController::class, 'update'])->name('products.update');
+// 商品更新
+Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 
 // 商品削除
 Route::delete('/products/{product}/delete', [ProductController::class, 'destroy'])->name('products.destroy');

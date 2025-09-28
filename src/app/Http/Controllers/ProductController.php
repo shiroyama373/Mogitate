@@ -121,4 +121,11 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', '商品を削除しました');
     }
+
+    // 商品編集フォーム
+public function edit(Product $product)
+{
+    $allSeasons = Season::all(); // チェックボックス用の全季節データ
+    return view('products.edit', compact('product', 'allSeasons'));
+}
 }

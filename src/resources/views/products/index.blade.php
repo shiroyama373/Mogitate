@@ -24,7 +24,7 @@
 
             @if(request('sort'))
             <div class="tags">
-                <span>　{{ request('sort') == 'price_desc' ? '高い順に表示' : '低い順に表示' }} <a href="{{ route('products.index') }}">×</a></span>
+                <span> {{ request('sort') == 'price_desc' ? '高い順に表示' : '低い順に表示' }} <a href="{{ route('products.index') }}">×</a></span>
             </div>
             @endif
 

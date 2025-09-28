@@ -20,20 +20,21 @@
 
         @php
             // 画像プレビュー用
+
             $previewImage = asset('images/no-image.png'); // デフォルト画像
 
-if ($product->image) {
-    $imagePath = 'products/' . $product->image;
-    if (Storage::disk('public')->exists($imagePath)) {
-        $previewImage = asset('storage/' . $imagePath);
+            if ($product->image) {
+            $imagePath = 'products/' . $product->image;
+            if (Storage::disk('public')->exists($imagePath)) {
+            $previewImage = asset('storage/' . $imagePath);
+        }
     }
-}
-            // チェックボックスの選択状態
-                $oldSeasons = old('season');
 
-    if ($oldSeasons !== null) {
-        $selectedSeasons = array_map('strval', (array)$oldSeasons);
-    } else {
+            // チェックボックスの選択状態
+            $oldSeasons = old('season');
+            if ($oldSeasons !== null) {
+            $selectedSeasons = array_map('strval', (array)$oldSeasons);
+            } else {
         // 初回表示時のみDBの値をセット
         $selectedSeasons = $product->seasons->pluck('id')->map(fn($i) => (string)$i)->toArray();
     }
@@ -48,7 +49,7 @@ if ($product->image) {
             <!-- 左: 画像 -->
             <div class="product-left">
                 <div class="product-image">
-                    <img id="preview" src="{{ $previewImage }}" style="{{ $previewImage ? '' : 'display:none;' }}">
+                    <img id="preview" src="{{ $previewImage }}">
                 </div>
 
                 <div class="file-wrapper">
