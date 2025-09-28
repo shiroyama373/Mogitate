@@ -20,10 +20,14 @@
 
         @php
             // 画像プレビュー用
-            $previewImage = old('delete_image') == 1
-                            ? null
-                            : (old('image_url') ?? ($product->image ? asset('storage/' . $product->image) : null));
+            $previewImage = asset('images/no-image.png'); // デフォルト画像
 
+if ($product->image) {
+    $imagePath = 'products/' . $product->image;
+    if (Storage::disk('public')->exists($imagePath)) {
+        $previewImage = asset('storage/' . $imagePath);
+    }
+}
             // チェックボックスの選択状態
                 $oldSeasons = old('season');
 

@@ -47,7 +47,7 @@
                 @if(!in_array($product->name, $displayed))
                     <div class="product-card">
                         <a href="{{ route('products.show', $product) }}">
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                        <img src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->name }}">
                         </a>
                         <div class="product-info">
                             <span class="name">{{ $product->name }}</span>
