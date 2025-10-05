@@ -23,12 +23,19 @@
 
             $previewImage = asset('images/no-image.png'); // デフォルト画像
 
-            if ($product->image) {
-            $imagePath = 'products/' . $product->image;
-            if (Storage::disk('public')->exists($imagePath)) {
-            $previewImage = asset('storage/' . $imagePath);
-        }
+            // 削除フラグが立っていなければ既存画像を表示
+if (old('delete_image', 0) == 0 && $product->image) {
+    $imagePath = 'products/' . $product->image;
+    if (Storage::disk('public')->exists($imagePath)) {
+        $previewImage = asset('storage/' . $imagePath);
     }
+}
+
+// 新しい画像がアップロードされている場合はそちらを優先
+if (old('image_url')) {
+    $previewImage = old('image_url');
+}
+
 
             // チェックボックスの選択状態
             $oldSeasons = old('season');

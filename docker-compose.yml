@@ -1,23 +1,21 @@
-version: "3.8"
-
 services:
   mysql:
     image: mysql:8.0
-    platform: linux/arm64/v8
     container_name: mogitate-mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: mogitate_db
       MYSQL_USER: mogitate_user
       MYSQL_PASSWORD: mogitate_pass
-    command: --default-authentication-plugin=mysql_native_password --ssl-mode=DISABLED
+    command: ["--default-authentication-plugin=mysql_native_password"]
     volumes:
       - mogitate_mysql_data:/var/lib/mysql
     ports:
       - "3306:3306"
 
   php:
-    image: php:8.2-fpm
+    build:
+      context: ./php
     container_name: mogitate-php
     volumes:
       - ./src:/var/www
@@ -50,4 +48,4 @@ services:
       - mysql
 
 volumes:
-  mogitate_mysql_data: {}
+  mogitate_mysql_data:

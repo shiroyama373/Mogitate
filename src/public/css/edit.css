@@ -1,0 +1,328 @@
+/* ページ全体 */
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Hiragino Mincho ProN W3', 'Yu Mincho', 'Times New Roman', serif;
+    position: relative;
+}
+
+/* パンくず */
+.breadcrumb {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.breadcrumb span{
+    color: #00BFFF;       /* 水色 */
+    text-decoration: none; /* 下線を消す */
+}
+
+.breadcrumb .black-text {
+    color: #000000;
+}
+
+
+/* 左右レイアウト */
+.product-page {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+/* 左: 商品画像 */
+.product-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.product-left img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+}
+
+#delete-image {
+    padding: 8px 15px;       /* ボタンの内側余白 */
+    font-size: 14px;         /* 文字サイズを小さく */
+    border-radius: 4px;      /* 角丸 */
+    margin-top: 10px;
+}
+
+/* 右: 商品情報 */
+.product-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ラベル */
+.product-right label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.product-right label[for="season"] {
+    margin-bottom: 1px; /* 既存の10pxなどを小さくする */
+}
+
+/* 入力欄 */
+.product-right input,
+.product-right textarea {
+    width: 90%;
+    padding: 16px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+/* 春夏秋冬 横並び */
+.season-checkboxes {
+    display: flex;
+    gap: 30px;
+    margin-top: 8px;
+}
+
+/* チェックボックスラベル */
+.custom-radio {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding-left: 28px; /* チェックマーク用 */
+    cursor: pointer;
+    user-select: none;
+}
+
+/* input を非表示 */
+.custom-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* 丸チェック */
+.custom-radio .checkmark {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border: 2px solid #555;
+    border-radius: 50%;
+}
+
+/* チェック時 */
+.custom-radio input:checked + .checkmark {
+    background-color: #000;
+}
+
+.custom-radio input:checked + .checkmark::after {
+    content: "✓";
+    color: #fff;
+    font-size: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
+}
+
+/* 商品説明 + ボタンのコンテナ */
+.product-description-container {
+    background-color: #f5f5f5;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.product-description textarea {
+    width: 100%;
+    max-width: 1100px;
+    min-height: 300px;
+    max-height: 600px;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    resize: none;
+    line-height: 1.6;
+}
+
+.product-description label {
+    font-size: 20px;     /* 文字サイズを大きく */
+    font-weight: bold;
+    margin-bottom: 10px; /* 入力ボックスとの間に余白を追加 */
+    display: block;      /* 下に余白を効かせるためブロック表示 */
+}
+
+
+/* 説明テキスト用のtextarea */
+.product-description textarea {
+    background-color: #fff; /* 文字入力部分だけ白背景 */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    min-height: 200px;  /* ここを大きく */
+    max-height: 400px;  /* 上限も調整 */
+    resize: none;
+    line-height: 1.6;  /* 行間 */
+}
+
+.button-center a.btn,
+.button-center button.btn {
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 6px;
+    text-align: center;
+    min-width: 120px;
+}
+
+/* ==========================
+   ボタンラッパー
+   ========================== */
+.button-wrapper {
+    display: flex;
+    justify-content: center; /* 中央揃え */
+    align-items: center;
+    gap: 20px;               /* ボタン間の間隔 */
+    margin-top: 20px;
+    position: relative;       /* 削除ボタンを右端にするため */
+}
+
+/* 保存・戻るボタン共通 */
+.button-wrapper .btn {
+    min-width: 200px;    /* 横幅 */
+    height: 60px;        /* 高さ */
+    font-size: 18px;     /* 文字サイズ */
+    border-radius: 6px;
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* 保存ボタンカラー */
+.btn-primary {
+    background-color: #FFD700;
+    color: #000;
+}
+.btn-primary:hover {
+    background-color: #FFC700;
+}
+
+/* 戻るボタンカラー */
+.btn-secondary {
+    background-color: #d3d3d3;
+    color: #000;
+}
+.btn-secondary:hover {
+    background-color: #c0c0c0;
+}
+
+/* ==========================
+   削除ボタン
+   ========================== */
+.btn-delete {
+    position: absolute;
+    right: 50px;           /* 右端からの距離 */
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.btn-delete i {
+    font-size: 2rem;     /* アイコンサイズ */
+    line-height: 1;        /* 縦中央 */
+}
+
+/* レスポンシブ対応: 幅が狭い場合は縦並びに */
+@media (max-width: 600px) {
+    .button-wrapper {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-delete {
+        position: relative;
+        right: auto;
+        margin-top: 10px;
+    }
+}
+
+/* エラーメッセージ */
+.error {
+    color: red;
+    font-size: 16px;
+    margin-top: 2px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .product-page {
+        flex-direction: column;
+    }
+
+    .product-left,
+    .product-right {
+        flex: unset;
+        width: 100%;
+    }
+}
+
+/* ファイル選択ボタン */
+.custom-file-label {
+    border: 1px solid #000;
+    background-color: #bbb;
+    color: #000;
+    padding: 12px 20px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-size: 16px; /* ここを大きくする（例: 16px） */
+    font-weight: bold; /* お好みで文字を太く */
+}
+
+.custom-file-label:hover {
+    background-color: #e0e0e0;
+}
+
+#image-name {
+    font-size: 18px;
+    color: #333;
+    margin-left: 15px;
+
+    display: inline-block;   /* 幅制限を効かせる */
+    max-width: 200px;        /* 好きな幅に調整 */
+    white-space: nowrap;      /* 改行させない */
+    overflow: hidden;         /* はみ出し部分を隠す */
+    text-overflow: ellipsis;  /* 末尾を「…」で省略 */
+    vertical-align: middle;   /* ボタンと高さを揃える */
+}

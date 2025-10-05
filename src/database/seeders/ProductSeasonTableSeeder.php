@@ -3,7 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Product;
+use App\Models\Season;
 
 class ProductSeasonTableSeeder extends Seeder
 {
@@ -12,21 +13,26 @@ class ProductSeasonTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('product_season')->insert([
-            // 春
-            ['product_id' => 1, 'season_id' => 1, 'created_at' => now(), 'updated_at' => now()],
-            ['product_id' => 2, 'season_id' => 1, 'created_at' => now(), 'updated_at' => now()],
-            ['product_id' => 5, 'season_id' => 1, 'created_at' => now(), 'updated_at' => now()],
-            // 夏
-            ['product_id' => 4, 'season_id' => 2, 'created_at' => now(), 'updated_at' => now()],
-            ['product_id' => 6, 'season_id' => 2, 'created_at' => now(), 'updated_at' => now()],
-            ['product_id' => 7, 'season_id' => 2, 'created_at' => now(), 'updated_at' => now()],
-            // 秋
-            ['product_id' => 3, 'season_id' => 3, 'created_at' => now(), 'updated_at' => now()],
-            ['product_id' => 8, 'season_id' => 3, 'created_at' => now(), 'updated_at' => now()],
-            // 冬
-            ['product_id' => 9, 'season_id' => 4, 'created_at' => now(), 'updated_at' => now()],
-            ['product_id' => 10, 'season_id' => 4, 'created_at' => now(), 'updated_at' => now()],
-        ]);
+        // 商品ごとに紐付けたいシーズンIDを配列で定義
+        $productSeasons = [
+            1 => [1],       // 商品ID 1 → 春
+            2 => [1, 2],    // 商品ID 2 → 春, 夏
+            3 => [3],       // 商品ID 3 → 秋
+            4 => [2],       // 商品ID 4 → 夏
+            5 => [1],       // 商品ID 5 → 春
+            6 => [2],       // 商品ID 6 → 夏
+            7 => [2],       // 商品ID 7 → 夏
+            8 => [3],       // 商品ID 8 → 秋
+            9 => [4],       // 商品ID 9 → 冬
+            10 => [4],      // 商品ID 10 → 冬
+        ];
+
+        foreach ($productSeasons as $productId => $seasonIds) {
+            $product = Product::find($productId);
+            if ($product) {
+                // sync() を使うことで重複を防ぎつつ中間テーブルを整理
+                $product->seasons()->sync($seasonIds);
+            }
+        }
     }
 }

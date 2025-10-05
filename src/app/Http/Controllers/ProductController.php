@@ -35,14 +35,15 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
-    // 商品詳細・編集画面
-    public function show(Product $product)
-    {
-        $allSeasons = Season::all();
-        return view('products.show_edit', compact('product', 'allSeasons'));
-    }
+    public function edit(Product $product)
+{
+    $allSeasons = Season::all();
+    $selectedSeasons = old('season', $product->seasons->pluck('id')->toArray());
 
-    // 商品作成フォーム
+    return view('products.edit', compact('product', 'allSeasons', 'selectedSeasons'));
+}
+
+    // 商品作成フォームa
     public function create()
     {
         $allSeasons = Season::all();
@@ -78,30 +79,36 @@ class ProductController extends Controller
     // 商品更新
     public function update(UpdateProductRequest $request, Product $product)
 {
-    $validated = $request->validated();
+    // 1. 削除フラグが立っていたら削除して一覧へリダイレクト
+    if ($request->input('delete_flag') == 1) {
+        if ($product->image) {
+            Storage::disk('public')->delete($product->image);
+        }
+        $product->delete();
+        return redirect()->route('products.index')->with('success', '商品を削除しました');
+    }
 
+    // 2. 通常の更新処理
+    $validated = $request->validated();
     $seasons = $request->input('season', []);
     $deleteImage = $request->input('delete_image');
 
     // 画像処理
     if ($request->hasFile('image')) {
-        // 古い画像を削除
         if ($product->image) {
             Storage::disk('public')->delete($product->image);
         }
         $validated['image'] = $request->file('image')->store('products', 'public');
     } elseif ($deleteImage) {
-        // 削除フラグが立っている場合、画像を削除
         if ($product->image) {
             Storage::disk('public')->delete($product->image);
         }
         $validated['image'] = null;
     } else {
-        // 何もしない場合は既存画像を保持
         unset($validated['image']);
     }
 
-    // Product更新（seasonは除外）
+    // 更新
     $product->update(collect($validated)->except('season')->toArray());
 
     // 中間テーブル（season）更新
@@ -109,7 +116,6 @@ class ProductController extends Controller
 
     return redirect()->route('products.index')->with('success', '商品を更新しました');
 }
-
 
     // 商品削除
     public function destroy(Product $product)
@@ -121,11 +127,4 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', '商品を削除しました');
     }
-
-    // 商品編集フォーム
-public function edit(Product $product)
-{
-    $allSeasons = Season::all(); // チェックボックス用の全季節データ
-    return view('products.edit', compact('product', 'allSeasons'));
-}
 }

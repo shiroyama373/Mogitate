@@ -38,26 +38,31 @@
         <a href="{{ route('products.create') }}" class="btn-add-page">+ 商品を追加</a>
         @endif
 
-        <div class="product-container">
+    <div class="product-container">
+        @php
+            $displayedImages = []; // 表示済みの画像を記録
+        @endphp
+
+        @foreach($products as $product)
             @php
-                $displayed = []; // 表示済みの商品名を記録
+                $imagePath = 'storage/products/' . $product->image;
             @endphp
 
-            @foreach($products as $product)
-                @if(!in_array($product->name, $displayed))
-                    <div class="product-card">
-                        <a href="{{ route('products.show', $product) }}">
-                        <img src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->name }}">
-                        </a>
-                        <div class="product-info">
-                            <span class="name">{{ $product->name }}</span>
-                            <span class="price">¥{{ number_format($product->price) }}</span>
-                        </div>
+            @if($product->image && !in_array($product->image, $displayedImages))
+                <div class="product-card">
+                    <a href="{{ route('products.edit', $product) }}">
+                        <img src="{{ file_exists(public_path($imagePath)) ? asset($imagePath) . '?v=' . filemtime(public_path($imagePath)) : asset('storage/products/default.png') }}" 
+                            alt="{{ $product->name ?: '名前なし' }}">
+                    </a>
+                    <div class="product-info">
+                        <span class="name">{{ $product->name ?: '名前なし' }}</span>
+                        <span class="price">¥{{ number_format($product->price) }}</span>
                     </div>
-                    @php $displayed[] = $product->name; @endphp
-                @endif
-            @endforeach
-        </div>
+                </div>
+                @php $displayedImages[] = $product->image; @endphp
+            @endif
+        @endforeach
+    </div>
 
         <div class="pagination-wrapper">
             {{ $products->withQueryString()->links() }}
