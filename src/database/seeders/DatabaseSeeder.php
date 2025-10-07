@@ -17,6 +17,6 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             SeasonSeeder::class,
             ProductSeasonTableSeeder::class,
-    ]);
+        ]);
     }
 }
