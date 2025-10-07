@@ -5,7 +5,7 @@
 ### Docker ビルド
 
 ```bash
-     git clone <https://github.com/shiroyama373/Mogitate.git>
+     git clone https://github.com/shiroyama373/Mogitate.git
     docker-compose up -d --build
 ```
 注意: MySQL は OS によって起動しない場合があります。その場合は、docker-compose.yml を編集し、環境に合わせて調整してください。
@@ -13,28 +13,29 @@
 Laravel 環境構築
 ```bash
 docker-compose exec php bash
+cd /var/www
 composer install
 cp .env.example .env
-.env の DB_DATABASE、DB_USERNAME、DB_PASSWORD は docker-compose.yml に合わせる
+# .env の DB_DATABASE、DB_USERNAME、DB_PASSWORD は docker-compose.yml に合わせる
 php artisan key:generate
 php artisan migrate
 php artisan db:seed
-ログインに必要なユーザー情報は src/database/seeders/UsersTableSeeder.php に記載
+# ログインに必要なユーザー情報は src/database/seeders/UsersTableSeeder.php に記載
 php artisan storage:link
 ```
 ⸻
 
 使用技術
 
-	•	PHP: 8.3
-	•	Laravel: 10
-	•	MySQL:  8.x
+	- PHP: 8.3.24
+	- Laravel: 10.48.29
+	- MySQL:  8.0.43
 
 ⸻
 
 URL
-	•	開発環境: http://localhost:8080/
-	•	phpMyAdmin: http://localhost:8081/
+	- 開発環境: http://localhost:8080/
+	- phpMyAdmin: http://localhost:8081/
 
 ⸻
 
@@ -56,7 +57,7 @@ URL
 
 ## ER 図
 
-![ER図](docs/mogitate.png)
+![ER図](docs/er_diagram.png)
 
 
 
@@ -67,7 +68,7 @@ URL
 - 画像ファイルを public/images に追加
 - storage/logs の権限問題を修正
 - 必要なマイグレーション・シーディングを行えるように調整
-•	確認方法:
+### 確認方法:
 ```bash
     php artisan migrate:fresh
     php artisan db:seed --class=ProductSeeder
