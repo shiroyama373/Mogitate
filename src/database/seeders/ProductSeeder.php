@@ -44,7 +44,7 @@ class ProductSeeder extends Seeder
                 'name' => 'シャインマスカット',
                 'description' => '爽やかな香りと上品な甘みが特長的なシャインマスカットは大人から子どもまで大人気のフルーツです。疲れた脳や体のエネルギー補給にも最適です。もぎたてフルーツのスムージーをお召し上がりください！',
                 'price' => 1400,
-                'image' => 'shine_muscat.png',
+                'image' => 'muscat.png',
             ],
             [
                 'name' => 'パイナップル',
@@ -56,7 +56,7 @@ class ProductSeeder extends Seeder
                 'name' => 'ブドウ',
                 'description' => 'ブドウの中でも人気の高い国産「巨峰」を使用。高い糖度と適度な酸味が魅力で、鮮やかなパープルで見た目も可愛い商品です。もぎたてフルーツのスムージーをお召し上がりください！',
                 'price' => 1100,
-                'image' => 'grape.png',
+                'image' => 'grapes.png',
             ],
             [
                 'name' => 'バナナ',
