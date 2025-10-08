@@ -12,7 +12,7 @@ class SeasonSeeder extends Seeder
         $seasons = ['春', '夏', '秋', '冬'];
 
         foreach ($seasons as $name) {
-            Season::create(['name' => $name]);
+    Season::firstOrCreate(['name' => $name]);
         }
     }
 }

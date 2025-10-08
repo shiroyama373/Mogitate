@@ -79,7 +79,7 @@ class ProductsTableSeeder extends Seeder
                 'price' => 900,
                 'description' => 'ジューシーで甘みたっぷりのメロン。見た目も華やかで贈り物にも最適です。',
                 'image' => 'melon.png',
-                'seasons' => ['夏'],
+                'seasons' => ['春','夏'],
             ],
         ];
 

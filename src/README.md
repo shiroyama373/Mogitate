@@ -12,7 +12,12 @@ docker-compose up -d --build
 
 Laravel 環境構築
 docker-compose exec php bash
+
+# Composer がインストールされていない場合は事前にインストールしてください
+# macOS の場合: brew install composer
+# Linux の場合: sudo apt install composer
 composer install
+
 cp .env.example .env   # 環境変数の設定
 php artisan key:generate
 php artisan migrate
@@ -62,3 +67,14 @@ URL
 
 ER図はリポジトリ内の docs/mogitate.png に保存しています。  
 必要に応じてファイルを開いて確認してください。
+
+クローン後に行った変更点・注意点
+	•	重複していた商品データを削除
+	•	ProductSeeder を追加し、ダミーデータを簡単に作成できるようにした
+	•	画像ファイルを public/images に追加
+	•	storage/logs の権限問題を修正
+	•	必要なマイグレーション・シーディングを行えるように調整
+
+確認方法
+php artisan migrate:fresh
+php artisan db:seed --class=ProductSeeder
