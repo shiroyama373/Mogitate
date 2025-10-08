@@ -14,7 +14,12 @@ Laravel 環境構築
 ```bash
 docker-compose exec php bash
 cd /var/www
+
+# Composer がインストールされていない場合は事前にインストールしてください
+# macOS の場合: brew install composer
+# Linux の場合: sudo apt install composer
 composer install
+
 cp .env.example .env
 # .env の DB_DATABASE、DB_USERNAME、DB_PASSWORD は docker-compose.yml に合わせる
 php artisan key:generate
