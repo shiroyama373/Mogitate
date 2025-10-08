@@ -5,7 +5,7 @@
 ### Docker ビルド
 
 ```bash
-     git clone https://github.com/shiroyama373/Mogitate.git
+    git clone https://github.com/shiroyama373/Mogitate.git
     docker-compose up -d --build
 ```
 注意: MySQL は OS によって起動しない場合があります。その場合は、docker-compose.yml を編集し、環境に合わせて調整してください。
@@ -14,20 +14,16 @@ Laravel 環境構築
 ```bash
 docker-compose exec php bash
 cd /var/www
-
-# Composer がインストールされていない場合は事前にインストールしてください
-# macOS の場合: brew install composer
-# Linux の場合: sudo apt install composer
 composer install
-
-cp .env.example .env
-# .env の DB_DATABASE、DB_USERNAME、DB_PASSWORD は docker-compose.yml に合わせる
+cp .env.example .env      # 環境変数の設定
 php artisan key:generate
-php artisan migrate
-php artisan db:seed
-# ログインに必要なユーザー情報は src/database/seeders/UsersTableSeeder.php に記載
+php artisan migrate:fresh
+php artisan db:seed --class=SeasonSeeder
+php artisan db:seed --class=ProductsTableSeeder
 php artisan storage:link
 ```
+
+• .env の DB 設定は docker-compose.yml に合わせてください。
 ⸻
 
 使用技術
